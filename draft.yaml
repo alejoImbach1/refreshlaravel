@@ -11,7 +11,7 @@ models:
         phone_number: string:10 nullable
         relationships:
             hasOne: Employee, Customer, User
-            belongsToMany: AcademicRecord
+            hasMany: AcademicBackground
 
     Department:
         id: id
@@ -27,12 +27,31 @@ models:
         relationships:
             hasMany: Employee
 
-    AcademicRecord:
+    AcademicProgram:
         id: id
-        degree_name: string
-        institution_name: string
+        name: string:100
+        degree_title: string:100
+        academic_level: enum:"PRIMARIA","BASICA","MEDIA","PREGRADO","POSGRADO"
         relationships:
-            belongsToMany: Person
+            hasMany: AcademicBackground
+            belongsToMany: AcademicInstitution
+
+    AcademicInstitution:
+        id: id
+        name: string:100
+        address: string
+        relationships:
+            belongsToMany: AcademicProgram
+
+    AcademicBackground:
+        id: id
+        status: enum:"FINISHED","PROGRESS"
+        starting_date: date nullable
+        finishing_date: date nullable
+        person_id: bigInteger unsigned foreign:people.id
+        academic_program_id: bigInteger unsigned foreign:academic_programs.id
+        relationships:
+            belongsTo: Person, AcademicProgram
 
     Employee:
         id: id
@@ -67,3 +86,4 @@ models:
         employee_id: bigInteger unsigned foreign:employees.id
         relationships:
             belongsToMany: Product
+            belongsTo: Customer, Employee
