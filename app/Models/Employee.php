@@ -2,27 +2,28 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
+/**
+ * The attributes that are mass assignable.
+ *
+ * @var array
+ */
+#[Fillable([
+    'salary',
+    'hiring_date',
+    'job_position_id',
+    'person_id',
+    'department_id',
+])]
+
 class Employee extends Model
 {
     use HasFactory;
-
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
-    protected $fillable = [
-        'salary',
-        'hiring_date',
-        'job_position_id',
-        'person_id',
-        'department_id',
-    ];
 
     /**
      * Get the attributes that should be cast.
@@ -32,7 +33,6 @@ class Employee extends Model
     protected function casts(): array
     {
         return [
-            'id' => 'integer',
             'salary' => 'decimal:2',
             'hiring_date' => 'date',
             'job_position_id' => 'integer',
@@ -41,6 +41,9 @@ class Employee extends Model
         ];
     }
 
+    /**
+     * Relaciones
+     */
     public function orders(): HasMany
     {
         return $this->hasMany(Order::class);

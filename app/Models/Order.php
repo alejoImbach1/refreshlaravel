@@ -2,24 +2,25 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
+/**
+ * The attributes that are mass assignable.
+ *
+ * @var array
+ */
+#[Fillable([
+    'customer_id',
+    'employee_id',
+])]
+
 class Order extends Model
 {
     use HasFactory;
-
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
-    protected $fillable = [
-        'customer_id',
-        'employee_id',
-    ];
 
     /**
      * Get the attributes that should be cast.
@@ -29,12 +30,14 @@ class Order extends Model
     protected function casts(): array
     {
         return [
-            'id' => 'integer',
             'customer_id' => 'integer',
             'employee_id' => 'integer',
         ];
     }
 
+    /**
+     * Relaciones
+     */
     public function products(): BelongsToMany
     {
         return $this->belongsToMany(Product::class);
