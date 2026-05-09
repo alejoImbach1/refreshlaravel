@@ -14,8 +14,8 @@ class OrderFactory extends Factory
     public function definition(): array
     {
         return [
-            'customer_id' => Customer::factory(),
-            'employee_id' => Employee::factory(),
+            // 'customer_id' => Customer::factory(),
+            // 'employee_id' => Employee::factory(),
         ];
     }
 }

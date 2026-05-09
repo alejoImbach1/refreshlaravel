@@ -12,9 +12,9 @@ class DepartmentFactory extends Factory
     public function definition(): array
     {
         return [
-            'code' => fake()->regexify('[A-Za-z0-9]{15}'),
-            'name' => fake()->name(),
-            'physical_location' => fake()->regexify('[A-Za-z0-9]{50}'),
+            'code' => fake()->unique()->regexify('[A-Za-z0-9]{15}'),
+            'name' => fake()->unique()->words(rand(1,3),true),
+            'physical_location' => fake()->words(rand(1,3),true),
         ];
     }
 }

@@ -12,10 +12,10 @@ class ProductFactory extends Factory
     public function definition(): array
     {
         return [
-            'sku' => fake()->regexify('[A-Za-z0-9]{10}'),
-            'slug' => fake()->slug(),
-            'name' => fake()->name(),
-            'price' => fake()->randomFloat(0, 0, 9999999999.),
+            'sku' => fake()->unique()->regexify('[A-Za-z0-9]{10}'),
+            'slug' => fake()->unique()->slug(),
+            'name' => fake()->unique()->words(rand(3,6),true),
+            'price' => fake()->randomFloat(2, 0, 99999999.99),
         ];
     }
 }

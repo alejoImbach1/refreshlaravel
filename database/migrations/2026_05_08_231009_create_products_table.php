@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('sku', 10)->unique();
             $table->string('slug')->unique();
             $table->string('name')->unique();
-            $table->decimal('price');
+            $table->decimal('price',10,2);
             $table->timestamps();
         });
 

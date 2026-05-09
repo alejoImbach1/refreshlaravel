@@ -12,8 +12,8 @@ class AcademicInstitutionFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => fake()->name(),
-            'address' => fake()->word(),
+            'name' => fake()->unique()->words(rand(3,5),true),
+            'address' => fake()->address(),
         ];
     }
 }

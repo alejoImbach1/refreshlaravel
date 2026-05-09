@@ -17,9 +17,9 @@ class EmployeeFactory extends Factory
         return [
             'salary' => fake()->randomFloat(2, 0, 9999999999.99),
             'hiring_date' => fake()->date(),
-            'job_position_id' => JobPosition::factory(),
-            'person_id' => Person::factory(),
-            'department_id' => Department::factory(),
+            'job_position_id' => JobPosition::all()->random()->id,
+            'person_id' => Person::all()->random()->id,
+            'department_id' => Department::all()->random()->id,
         ];
     }
 }

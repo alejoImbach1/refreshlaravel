@@ -12,7 +12,7 @@ class JobPositionFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => fake()->name(),
+            'name' => fake()->unique()->words(rand(2,5),true),
         ];
     }
 }

@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Enums\AcademicProgramLevel;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class AcademicProgramFactory extends Factory
@@ -12,9 +13,9 @@ class AcademicProgramFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => fake()->name(),
-            'degree_title' => fake()->regexify('[A-Za-z0-9]{100}'),
-            'academic_level' => fake()->randomElement(["PRIMARIA","BASICA","MEDIA","PREGRADO","POSGRADO"]),
+            'name' => fake()->unique()->words(rand(3,5),true),
+            'degree_title' => fake()->unique()->words(rand(3,5),true),
+            'academic_level' => fake()->randomElement(AcademicProgramLevel::cases()),
         ];
     }
 }

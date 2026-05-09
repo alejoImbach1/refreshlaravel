@@ -2,6 +2,8 @@
 
 namespace Database\Factories;
 
+use App\Models\Enums\PersonGender;
+use App\Models\Enums\PersonNuipType;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class PersonFactory extends Factory
@@ -12,14 +14,14 @@ class PersonFactory extends Factory
     public function definition(): array
     {
         return [
-            'nuip_type' => fake()->randomElement(["CEDULA_CIUDADANIA","REGISTRO_CIVIL_NACIMIENTO","TARJETA_IDENTIDAD","CEDULA_EXTRANJERIA","PASAPORTE"]),
-            'nuip' => fake()->regexify('[A-Za-z0-9]{10}'),
+            'nuip_type' => fake()->randomElement(PersonNuipType::cases()),
+            'nuip' => (string) random_int(1000000,9999999),
             'name' => fake()->name(),
-            'surname' => fake()->regexify('[A-Za-z0-9]{80}'),
-            'gender' => fake()->randomElement(["MALE","FEMALE","OTHER"]),
+            'surname' => fake()->lastName(),
+            'gender' => fake()->randomElement(PersonGender::cases()),
             'birth_date' => fake()->date(),
             'email' => fake()->safeEmail(),
-            'phone_number' => fake()->phoneNumber(),
+            'phone_number' => strval(rand(300,320)) . strval(fake()->randomNumber(7,true)),
         ];
     }
 }

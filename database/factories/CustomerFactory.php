@@ -13,7 +13,7 @@ class CustomerFactory extends Factory
     public function definition(): array
     {
         return [
-            'person_id' => Person::factory(),
+            'person_id' => Person::all()->random()->id,
         ];
     }
 }

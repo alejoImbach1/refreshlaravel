@@ -2,8 +2,8 @@
 
 namespace App\Models;
 
-use App\Enums\PersonGender;
-use App\Enums\PersonNuipType;
+use App\Models\Enums\PersonGender;
+use App\Models\Enums\PersonNuipType;
 use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;

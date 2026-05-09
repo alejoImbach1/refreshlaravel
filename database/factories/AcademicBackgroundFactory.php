@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\AcademicProgram;
+use App\Models\Enums\AcademicBackgroundStatus;
 use App\Models\Person;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -14,11 +15,11 @@ class AcademicBackgroundFactory extends Factory
     public function definition(): array
     {
         return [
-            'status' => fake()->randomElement(["FINISHED","IN_PROGRESS"]),
+            'status' => fake()->randomElement(AcademicBackgroundStatus::cases()),
             'starting_date' => fake()->date(),
             'finishing_date' => fake()->date(),
-            'person_id' => Person::factory(),
-            'academic_program_id' => AcademicProgram::factory(),
+            'person_id' => Person::all()->random()->id,
+            'academic_program_id' => AcademicProgram::all()->random()->id,
         ];
     }
 }

@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\Enums\AcademicBackgroundStatus;
+use App\Models\Enums\AcademicBackgroundStatus;
 use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
