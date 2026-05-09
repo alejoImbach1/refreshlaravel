@@ -1,5 +1,6 @@
 <?php
 
+use App\Enums\AcademicProgramLevel;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -15,7 +16,7 @@ return new class extends Migration
             $table->id();
             $table->string('name', 100);
             $table->string('degree_title', 100);
-            $table->enum('academic_level', ["PRIMARIA","BASICA","MEDIA","PREGRADO","POSGRADO"]);
+            $table->enum('academic_level', AcademicProgramLevel::cases());
             $table->timestamps();
         });
     }

@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Enums\PersonGender;
+use App\Enums\PersonNuipType;
 use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -36,6 +38,8 @@ class Person extends Model
     protected function casts(): array
     {
         return [
+            'nuip_type' => PersonNuipType::class,
+            'gender' => PersonGender::class,
             'birth_date' => 'date',
         ];
     }

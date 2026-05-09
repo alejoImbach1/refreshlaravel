@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\AcademicBackgroundStatus;
 use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -32,6 +33,7 @@ class AcademicBackground extends Model
     protected function casts(): array
     {
         return [
+            'status' => AcademicBackgroundStatus::class,
             'starting_date' => 'date',
             'finishing_date' => 'date',
             'person_id' => 'integer',

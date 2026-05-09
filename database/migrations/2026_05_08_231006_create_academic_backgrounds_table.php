@@ -1,5 +1,6 @@
 <?php
 
+use App\Enums\AcademicBackgroundStatus;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -15,7 +16,7 @@ return new class extends Migration
 
         Schema::create('academic_backgrounds', function (Blueprint $table) {
             $table->id();
-            $table->enum('status', ["FINISHED","IN_PROGRESS"]);
+            $table->enum('status', AcademicBackgroundStatus::cases());
             $table->date('starting_date')->nullable();
             $table->date('finishing_date')->nullable();
             $table->foreignId('person_id')->constrained();

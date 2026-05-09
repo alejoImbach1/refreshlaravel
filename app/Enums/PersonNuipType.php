@@ -1,0 +1,8 @@
+<?php
+
+namespace App\Enums;
+
+enum PersonNuipType
+{
+    //["CEDULA_CIUDADANIA","REGISTRO_CIVIL_NACIMIENTO","TARJETA_IDENTIDAD","CEDULA_EXTRANJERIA","PASAPORTE"]
+}

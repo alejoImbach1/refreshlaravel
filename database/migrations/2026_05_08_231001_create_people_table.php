@@ -1,5 +1,7 @@
 <?php
 
+use App\Enums\PersonGender;
+use App\Enums\PersonNuipType;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -13,11 +15,11 @@ return new class extends Migration
     {
         Schema::create('people', function (Blueprint $table) {
             $table->id();
-            $table->enum('nuip_type', ["CEDULA_CIUDADANIA","REGISTRO_CIVIL_NACIMIENTO","TARJETA_IDENTIDAD","CEDULA_EXTRANJERIA","PASAPORTE"])->default('CEDULA_CIUDADANIA');
+            $table->enum('nuip_type', PersonNuipType::cases())->default('CEDULA_CIUDADANIA');
             $table->string('nuip', 10)->unique()->nullable();
             $table->string('name', 80);
             $table->string('surname', 80);
-            $table->enum('gender', ["MALE","FEMALE","OTHER"]);
+            $table->enum('gender', PersonGender::cases());
             $table->date('birth_date');
             $table->string('email')->nullable();
             $table->string('phone_number', 10)->nullable();

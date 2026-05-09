@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\AcademicProgramLevel;
 use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -28,12 +29,12 @@ class AcademicProgram extends Model
      *
      * @return array<string, string>
      */
-    // protected function casts(): array
-    // {
-    //     return [
-
-    //     ];
-    // }
+    protected function casts(): array
+    {
+        return [
+            'academic_level' => AcademicProgramLevel::class,
+        ];
+    }
 
     /**
      * Relaciones
