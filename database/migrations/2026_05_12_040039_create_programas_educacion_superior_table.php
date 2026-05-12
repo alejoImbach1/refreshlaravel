@@ -15,14 +15,15 @@ return new class extends Migration
 
         Schema::create('programas_educacion_superior', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('codigo_sines_del_programa');
-            $table->string('nombre del programa')->nullable();
+            $table->unsignedBigInteger('codigo_sines_del_programa')->unique();
+            $table->string('nombre_del_programa')->nullable();
             $table->string('titulo_otorgado')->nullable();
             $table->string('estado_programa')->nullable();
             $table->string('reconocimiento_del_ministerio')->nullable();
             $table->string('nivel_academico')->nullable();
             $table->string('modalidad')->nullable();
-            $table->foreignId('institucion_educacion_superior_id')->constrained();
+            $table->unsignedBigInteger('institucion_educacion_superior_id')->nullable();
+            $table->foreign('institucion_educacion_superior_id')->references('id')->on('instituciones_educacion_superior')->nullOnDelete();
         });
 
         Schema::enableForeignKeyConstraints();
