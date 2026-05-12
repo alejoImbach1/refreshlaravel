@@ -11,22 +11,20 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::disableForeignKeyConstraints();
 
         Schema::create('programas_educacion_superior', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('codigo_sines_del_programa')->unique();
+            $table->unsignedBigInteger('codigo_snies_del_programa')->unique();
             $table->string('nombre_del_programa')->nullable();
             $table->string('titulo_otorgado')->nullable();
             $table->string('estado_programa')->nullable();
             $table->string('reconocimiento_del_ministerio')->nullable();
             $table->string('nivel_academico')->nullable();
             $table->string('modalidad')->nullable();
-            $table->unsignedBigInteger('institucion_educacion_superior_id')->nullable();
-            $table->foreign('institucion_educacion_superior_id')->references('id')->on('instituciones_educacion_superior')->nullOnDelete();
+            $table->unsignedBigInteger('codigo_ies');
+            $table->foreign('codigo_ies')->references('codigo_institucion')->on('instituciones_educacion_superior')->cascadeOnDelete();
         });
 
-        Schema::enableForeignKeyConstraints();
     }
 
     /**

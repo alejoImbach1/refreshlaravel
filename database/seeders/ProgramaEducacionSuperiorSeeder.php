@@ -2,8 +2,9 @@
 
 namespace Database\Seeders;
 
-use App\Models\ProgramaEducacionSuperior;
+use App\Models\Imports\ProgramasEducacionSuperiorImport;
 use Illuminate\Database\Seeder;
+use Maatwebsite\Excel\Facades\Excel;
 
 class ProgramaEducacionSuperiorSeeder extends Seeder
 {
@@ -12,6 +13,7 @@ class ProgramaEducacionSuperiorSeeder extends Seeder
      */
     public function run(): void
     {
-        ProgramaEducacionSuperior::factory()->count(5)->create();
+        Excel::import(new ProgramasEducacionSuperiorImport, storage_path('app\\private\\models\\imports\\programas_educacion_superior.csv'));
+
     }
 }

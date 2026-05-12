@@ -12,19 +12,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::disableForeignKeyConstraints();
-
         Schema::create('academic_backgrounds', function (Blueprint $table) {
             $table->id();
             $table->enum('status', AcademicBackgroundStatus::cases())->default(AcademicBackgroundStatus::FINISHED);
             $table->date('starting_date')->nullable();
             $table->date('finishing_date')->nullable();
-            $table->foreignId('person_id')->constrained();
-            $table->foreignId('academic_program_id')->constrained();
+            $table->foreignId('person_id')->constrained()->cascadeOnDelete();
+            $table->unsignedBigInteger('programa_ies_id');
+            $table->foreign('programa_ies_id')->references('id')->on('programas_educacion_superior')->cascadeOnDelete();
             $table->timestamps();
         });
-
-        Schema::enableForeignKeyConstraints();
     }
 
     /**

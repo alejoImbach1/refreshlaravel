@@ -14,14 +14,14 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @var array
  */
 #[Fillable([
-     'codigo_institucion',
-        'nombre_institucion',
-        'estado',
-        'nit',
-        'departamento_domicilio',
-        'municipio_domicilio',
-        'direccion_domicilio',
-        'telefono_domicilio',
+    'codigo_institucion',
+    'nombre_institucion',
+    'estado',
+    'nit',
+    'departamento_domicilio',
+    'municipio_domicilio',
+    'direccion_domicilio',
+    'telefono_domicilio',
 ])]
 
 /*
@@ -50,8 +50,8 @@ class InstitucionEducacionSuperior extends Model
         ];
     }
 
-    public function programaEducacionSuperiors(): HasMany
+    public function programasEducacionSuperior(): HasMany
     {
-        return $this->hasMany(ProgramaEducacionSuperior::class);
+        return $this->hasMany(ProgramaEducacionSuperior::class, 'codigo_ies','codigo_institucion');
     }
 }

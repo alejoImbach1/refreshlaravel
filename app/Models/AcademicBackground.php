@@ -18,7 +18,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
     'starting_date',
     'finishing_date',
     'person_id',
-    'academic_program_id',
+    'programa_ies_id',
 ])]
 
 class AcademicBackground extends Model
@@ -37,7 +37,7 @@ class AcademicBackground extends Model
             'starting_date' => 'date',
             'finishing_date' => 'date',
             'person_id' => 'integer',
-            'academic_program_id' => 'integer',
+            'programa_ies_id' => 'integer',
         ];
     }
 
@@ -51,8 +51,8 @@ class AcademicBackground extends Model
         return $this->belongsTo(Person::class);
     }
 
-    public function academicProgram(): BelongsTo
+    public function programaEducacionSuperior(): BelongsTo
     {
-        return $this->belongsTo(AcademicProgram::class);
+        return $this->belongsTo(ProgramaEducacionSuperior::class,'programa_ies_id');
     }
 }

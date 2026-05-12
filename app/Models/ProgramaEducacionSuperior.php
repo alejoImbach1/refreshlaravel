@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Attributes\Table;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
  * The attributes that are mass assignable.
@@ -14,14 +15,14 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @var array
  */
 #[Fillable([
-    'codigo_sines_del_programa',
-        'nombre del programa',
-        'titulo_otorgado',
-        'estado_programa',
-        'reconocimiento_del_ministerio',
-        'nivel_academico',
-        'modalidad',
-        'institucion_educacion_superior_id',
+    'codigo_snies_del_programa',
+    'nombre_del_programa',
+    'titulo_otorgado',
+    'estado_programa',
+    'reconocimiento_del_ministerio',
+    'nivel_academico',
+    'modalidad',
+    'codigo_ies',
 ])]
 
 /*
@@ -46,13 +47,18 @@ class ProgramaEducacionSuperior extends Model
     protected function casts(): array
     {
         return [
-            'codigo_sines_del_programa' => 'integer',
-            'institucion_educacion_superior_id' => 'integer',
+            'codigo_snies_del_programa' => 'integer',
+            'codigo_ies' => 'integer',
         ];
     }
 
     public function institucionEducacionSuperior(): BelongsTo
     {
-        return $this->belongsTo(InstitucionEducacionSuperior::class);
+        return $this->belongsTo(InstitucionEducacionSuperior::class, 'codigo_ies','codigo_institucion');
+    }
+
+    public function academicBackgrounds(): HasMany
+    {
+        return $this->hasMany(AcademicBackground::class, 'programa_ies_id');
     }
 }
