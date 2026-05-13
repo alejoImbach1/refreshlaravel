@@ -2,18 +2,19 @@
 
 namespace App\Models\Enums;
 
-use App\Enums\Interfaces\DescriptivelyNamed;
-use App\Enums\Traits\HasDescriptiveNames;
+use App\Enums\Interfaces\Labeled;
+use App\Enums\Traits\HasLabels;
 use App\Enums\Traits\HasNames;
+use Filament\Support\Contracts\HasLabel;
 
-enum AcademicBackgroundStatus implements DescriptivelyNamed
+enum AcademicBackgroundStatus: string implements HasLabel
 {
-    use HasNames, HasDescriptiveNames;
+    use HasNames;
 
-    case FINISHED;
-    case IN_PROGRESS;
-    
-    public function getDescriptiveName(): string
+    case FINISHED = 'finished';
+    case IN_PROGRESS = 'in_progress';
+
+    public function getLabel(): string
     {
         return match($this) {
             self::FINISHED => 'Finalizado',

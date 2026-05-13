@@ -7,18 +7,20 @@ use App\Enums\Interfaces\DescriptivelyNamed;
 use App\Enums\Traits\HasAbbreviations;
 use App\Enums\Traits\HasDescriptiveNames;
 use App\Enums\Traits\HasNames;
+use Filament\Support\Contracts\HasLabel;
+use Illuminate\Contracts\Support\Htmlable;
 
-enum PersonNuipType implements DescriptivelyNamed, AbbreviationInterface
+enum PersonNuipType:string implements HasLabel, AbbreviationInterface
 {
-    use HasNames, HasAbbreviations, HasDescriptiveNames;
+    use HasNames, HasAbbreviations ;
     
-    case CEDULA_CIUDADANIA;
-    case REGISTRO_CIVIL_NACIMIENTO;
-    case TARJETA_IDENTIDAD;
-    case CEDULA_EXTRANJERIA;
-    case PASAPORTE;
+    case CEDULA_CIUDADANIA = 'cedula_ciudadania';
+    case REGISTRO_CIVIL_NACIMIENTO = 'registro_civil_nacimiento';
+    case TARJETA_IDENTIDAD = 'tarjeta_identidad';
+    case CEDULA_EXTRANJERIA = 'cedula_extranjera';
+    case PASAPORTE = 'pasaporte';
 
-    public function getDescriptiveName(): string
+    public function getLabel(): string
     {
         return match($this) {
             self::CEDULA_CIUDADANIA => 'Cédula de ciudadanía',
@@ -41,4 +43,5 @@ enum PersonNuipType implements DescriptivelyNamed, AbbreviationInterface
             default => $this->name,
         };
     }
+
 }

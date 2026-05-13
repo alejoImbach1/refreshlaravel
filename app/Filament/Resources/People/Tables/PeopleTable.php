@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources\People\Tables;
 
+use App\Models\Person;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
@@ -15,15 +16,17 @@ class PeopleTable
         return $table
             ->columns([
                 TextColumn::make('nuip_type')
-                    ->badge(),
+                    ->label('NUIP Type')
+                    ->state(fn (Person $record): ?string => $record->nuip_type?->getAbbreviation()),
                 TextColumn::make('nuip')
+                    ->label('NUIP')
                     ->searchable(),
                 TextColumn::make('name')
                     ->searchable(),
                 TextColumn::make('surname')
                     ->searchable(),
                 TextColumn::make('gender')
-                    ->badge(),
+                    ->state(fn (Person $record): ?string => $record->gender?->getAbbreviation()),
                 TextColumn::make('birth_date')
                     ->date()
                     ->sortable(),

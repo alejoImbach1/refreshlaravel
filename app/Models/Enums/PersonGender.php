@@ -7,16 +7,17 @@ use App\Enums\Interfaces\DescriptivelyNamed;
 use App\Enums\Traits\HasAbbreviations;
 use App\Enums\Traits\HasDescriptiveNames;
 use App\Enums\Traits\HasNames;
+use Filament\Support\Contracts\HasLabel;
 
-enum PersonGender implements DescriptivelyNamed, AbbreviationInterface
+enum PersonGender: string implements HasLabel, AbbreviationInterface
 {
-    use HasNames, HasAbbreviations, HasDescriptiveNames;
+    use HasNames, HasAbbreviations;
 
-    case MALE;
-    case FEMALE;
-    case RATHER_NOT_SAY;
+    case MALE = 'male';
+    case FEMALE = 'female';
+    case RATHER_NOT_SAY = 'rather_not_say';
 
-    public function getDescriptiveName(): string
+    public function getLabel(): string
     {
         return match($this) {
             self::MALE => 'Masculino',

@@ -19,16 +19,16 @@ class DatabaseSeeder extends Seeder
         
 
         $this->call([
-            DepartamentoGeograficoSeeder::class,
-            MunicipioGeograficoSeeder::class,
+            // DepartamentoGeograficoSeeder::class,
+            // MunicipioGeograficoSeeder::class,
             PersonSeeder::class,
             UserSeeder::class,
             DepartmentSeeder::class,
             JobPositionSeeder::class,
-            InstitucionEducacionSuperiorSeeder::class,
-            ColegioSeeder::class,
-            ProgramaEducacionSuperiorSeeder::class,
-            AcademicBackgroundSeeder::class,
+            // InstitucionEducacionSuperiorSeeder::class,
+            // ColegioSeeder::class,
+            // ProgramaEducacionSuperiorSeeder::class,
+            // AcademicBackgroundSeeder::class,
             EmployeeSeeder::class,
             CustomerSeeder::class,
             ProductSeeder::class,
