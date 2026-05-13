@@ -18,8 +18,9 @@ return new class extends Migration
             $table->date('starting_date')->nullable();
             $table->date('finishing_date')->nullable();
             $table->foreignId('person_id')->constrained()->cascadeOnDelete();
-            $table->unsignedBigInteger('programa_ies_id');
-            $table->foreign('programa_ies_id')->references('id')->on('programas_educacion_superior')->cascadeOnDelete();
+            // $table->unsignedBigInteger('programa_ies_id');
+            // $table->foreign('programa_ies_id')->references('id')->on('programas_educacion_superior')->cascadeOnDelete();
+            $table->morphs('acad_bgable');
             $table->timestamps();
         });
     }

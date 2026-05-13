@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 
 /**
  * The attributes that are mass assignable.
@@ -57,8 +58,16 @@ class ProgramaEducacionSuperior extends Model
         return $this->belongsTo(InstitucionEducacionSuperior::class, 'codigo_ies','codigo_institucion');
     }
 
-    public function academicBackgrounds(): HasMany
+    // public function academicBackgrounds(): HasMany
+    // {
+    //     return $this->hasMany(AcademicBackground::class, 'programa_ies_id');
+    // }
+
+    /**
+     * Get all of the academic backgrounds for the programa educacion superior.
+     */
+    public function academicBackgrounds(): MorphMany
     {
-        return $this->hasMany(AcademicBackground::class, 'programa_ies_id');
+        return $this->morphMany(AcademicBackground::class, 'acad_bgable');
     }
 }

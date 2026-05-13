@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\MorphTo;
 
 /**
  * The attributes that are mass assignable.
@@ -51,8 +52,16 @@ class AcademicBackground extends Model
         return $this->belongsTo(Person::class);
     }
 
-    public function programaEducacionSuperior(): BelongsTo
+    // public function programaEducacionSuperior(): BelongsTo
+    // {
+    //     return $this->belongsTo(ProgramaEducacionSuperior::class,'programa_ies_id');
+    // }
+
+    /**
+     * Get the parent academic backgroundable model
+     */
+    public function acadBgable(): MorphTo
     {
-        return $this->belongsTo(ProgramaEducacionSuperior::class,'programa_ies_id');
+        return $this->morphTo();
     }
 }

@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Attributes\Table;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 
 /**
  * The attributes that are mass assignable.
@@ -45,4 +46,12 @@ class Colegio extends Model
     //         'codigo_establecimiento' => 'integer',
     //     ];
     // }
+
+    /**
+     * Get all of the academic backgrounds for the colegios
+     */
+    public function academicBackgrounds(): MorphMany
+    {
+        return $this->morphMany(AcademicBackground::class, 'acad_bgable');
+    }
 }
