@@ -24,11 +24,14 @@ class DatabaseSeeder extends Seeder
             DepartmentSeeder::class,
             JobPositionSeeder::class,
             InstitucionEducacionSuperiorSeeder::class,
-            ProgramaEducacionSuperiorSeeder::class,
-            AcademicBackgroundSeeder::class,
+            // ProgramaEducacionSuperiorSeeder::class,
+            // AcademicBackgroundSeeder::class,
             EmployeeSeeder::class,
             CustomerSeeder::class,
             ProductSeeder::class,
+            ColegioSeeder::class,
+            DepartamentoGeograficoSeeder::class,
+            MunicipioGeograficoSeeder::class,
         ]);
     }
 }
