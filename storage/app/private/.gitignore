@@ -1,2 +1,7 @@
 *
+
+!models/
+!models/imports/
+!models/imports/*
+
 !.gitignore
