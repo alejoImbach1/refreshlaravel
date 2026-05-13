@@ -46,12 +46,7 @@ class MunicipioGeografico extends Model
         ];
     }
 
-    public function departamentoGeografico(): BelongsTo
-    {
-        return $this->belongsTo(DepartamentoGeografico::class);
-    }
-
-    public function departamentosGeografico(): BelongsTo
+    public function departamento(): BelongsTo
     {
         return $this->belongsTo(DepartamentoGeografico::class, 'codigo_departamento', 'codigo_departamento');
     }
